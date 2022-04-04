@@ -15,7 +15,7 @@
     <script>
         function submitToAPI(e) {
           e.preventDefault();
-          var URL = "https://efekv6vk1b.execute-api.us-west-2.amazonaws.com/prod/contact-us"; 
+          var URL = "-Aqui coloca tu link de Punto de enlace de API Gateway-"; 
     
                var Namere = /[A-Za-z]{1}[A-Za-z]/;
                if (!Namere.test($("#name-input").val())) {
@@ -51,7 +51,7 @@
     
           $.ajax({
             type: "POST",
-            url : "-Aqui tu Punto de enlace de API Gateway-",
+            url : "-Aqui coloca tu link de Punto de enlace de API Gateway-",
             dataType: "json",
             crossDomain: "true",
             contentType: "application/json; charset=utf-8",
