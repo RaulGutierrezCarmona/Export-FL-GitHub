@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - FRADA Logistic S.A. de C.V.</title>
+    <meta name="description" content="Somos una empresa que transporta via aerea y terrestre">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lora:400,700,400italic,700italic">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Cabin:700">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
+    <script>
+        function submitToAPI(e) {
+          e.preventDefault();
+          var URL = "https://efekv6vk1b.execute-api.us-west-2.amazonaws.com/prod/contact-us"; 
+    
+               var Namere = /[A-Za-z]{1}[A-Za-z]/;
+               if (!Namere.test($("#name-input").val())) {
+                            alert ("Verifique su nombre.");
+                   return;
+               }
+               var mobilere = /[0-9]{10}/;
+               if (!mobilere.test($("#phone-input").val())) {
+                   alert ("Ingrese un telefono valido.");
+                   return;
+               }
+               if ($("#email-input").val()=="") {
+                   alert ("Por favor ingrese su email.");
+                   return;
+               }
+    
+               var reeamil = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,6})?$/;
+               if (!reeamil.test($("#email-input").val())) {
+                   alert ("Por favor ingrese un email valido.");
+                   return;
+               }
+    
+          var name = $("#name-input").val();
+          var phone = $("#phone-input").val();
+          var email = $("#email-input").val();
+          var desc = $("#description-input").val();
+          var data = {
+             name : name,
+             phone : phone,
+             email : email,
+             desc : desc
+           };
+    
+          $.ajax({
+            type: "POST",
+            url : "https://efekv6vk1b.execute-api.us-west-2.amazonaws.com/prod/contact-us",
+            dataType: "json",
+            crossDomain: "true",
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(data),
+    
+            success: function () {
+              // clear form and show a success message
+              alert("Mensaje enviado.");
+              document.getElementById("contact-form").reset();
+              location.reload();
+            },
+            error: function () {
+              // show an error message
+              alert("Problema en el envio.");
+            }});
+        }
+    </script>
+</head>
+
+<body id="page-top">
+    <nav class="navbar navbar-light navbar-expand-md navbar navbar-expand-lg fixed-top" id="mainNav">
+        <div class="container"><a class="navbar-brand js-scroll-trigger" href="#"><img id="logo" src="assets/img/logo-frada-blanco.png">FRADA Logistic</a><button data-toggle="collapse" class="navbar-toggler navbar-toggler-right" data-target="#navbarResponsive" type="button" aria-controls="navbarResponsive"
+                aria-expanded="false" aria-label="Toggle navigation" value="Menu"><i class="fa fa-bars"></i></button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="nav navbar-nav ml-auto">
+                    <li class="nav-item nav-link js-scroll-trigger" role="presentation"><a class="nav-link active js-scroll-trigger" href="#about">Nosotros</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger" role="presentation"><a class="nav-link js-scroll-trigger" href="#download">Servicios</a></li>
+                    <li class="nav-item nav-link js-scroll-trigger" role="presentation"><a class="nav-link js-scroll-trigger" href="#contact-form">Contacto / Waze</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <header class="masthead" style="background-image:url('assets/img/intro-bg.jpg');">
+        <div class="intro-body">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 mx-auto">
+                        <h1 class="brand-heading">transporte</h1>
+                        <p class="intro-text">Nos dedicamos a servicios de logistica, si lo que buscas es calidad y rapidez...<br>¡Somos tu mejor opcion!</p><a class="btn btn-link btn-circle" role="button" href="#about"><i class="fa fa-angle-double-down animated"></i></a></div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <section id="about" class="content-section text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2>Acerca de la empresa</h2>
+                    <p>Somos una empresa mexicana dedicada a prestar servicios de logistica, para su comodidad contamos con una oficina de <strong>Despacho</strong> autorizada por la <strong>Direccion General de Aeronautica Civil (DGAC)</strong> ahora <a href="https://ts.sct.gob.mx/transporte-y-medicina-preventiva/aeronautica-civil/inicio/" target="_blank">AFAC  </a>, esto, para llevar a cabo planes de vuelo, así como los
+                        permisos necesarios ante las autoridades aeronauticas para la llegada-salida de aeronaves ya sea para importacion o exportacion de materiales en vuelos charter de carga. </p>
+                    <p>Adicionalmente coordinamos transporte terrestre para la entrega en destino final de los diversos suministros y materiales que requiere la industria.   </p>
+                    <p>Usted estara en buenas manos debido a que somos un equipo de profesionales quienes contamos con mas de 20 años de experiencia en el medio aeronautico, lo cual nos permite ofrecer un servicio de calidad total para clientes y amigos</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="download" class="download-section content-section text-center" style="background-image:url('assets/img/ingeniero-contenedor-logistica-bg.jpg');">
+        <div class="container">
+            <div class="col-lg-8 mx-auto">
+                <h1>servicios que ofrecemos</h1>
+                <h3>Ground Handling</h3>
+                <ul>
+                    <li> <span>Coordinamos Servicios Corporativos y de Carga</span> </li>
+                    <li> <span>Equipo de Apoyo Terrestre</span> </li>
+                    <li> <span>Transporte Terrestre de Carga</span> </li>
+                    <li> <span>Servicios de Aduana</span> </li>
+                 </ul>
+                
+            </div>
+        </div>
+    </section>
+    <section id="contact-form" class="content-section text-center">   
+        <div class="container">
+            <p>Sientase libre de contactarnos o solicitar alguna cotizacion.</p>        
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <h2>contactenos</h2>
+                    <form method="post">
+                    <!--
+                        <div class="form-group"><input class="form-control" type="text" name="name" placeholder="Name"></div>
+                        <div class="form-group"><input class="form-control is-invalid" type="email" name="email" placeholder="Email"><small class="form-text text-danger">Please enter a correct email address.</small></div>
+                        <div class="form-group"><textarea class="form-control" name="message" placeholder="Message" rows="14"></textarea></div>
+                        <div class="form-group"><button class="btn btn-primary" type="submit">send </button></div>
+                    -->                    
+                     <div class="form-group"><input class="form-control" type="text" id="name-input" placeholder="Nombre"></div>
+                     <div class="form-group"><input class="form-control" type="phone" id="phone-input" placeholder="Telefono"></div>    
+                     <div class="form-group"><input class="form-control" type="email" id="email-input" placeholder="Correo"></div>
+      
+                     <h5>¿Como podemos ayudarle?</h5>
+                     <div class="form-group"><textarea class="form-control" id="description-input" rows="3" placeholder="Mensaje"></textarea></div>
+                     <div class="g-recaptcha" data-sitekey="6Lc7cVMUAAAAAM1yxf64wrmO8gvi8A1oQ_ead1ys" class="form-control" style="width:100%;"></div>
+                     <button type="button" onClick="submitToAPI(event)" class="btn btn-primary" style="margin-top:20px;">Enviar Mensaje</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <!--</section>-->
+        <div class="row"></div>
+            <div class="col-lg-8 mx-auto">
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <h1>nuestra ubicacion</h1>
+            </div>
+        </div>    
+            <div class="map-clean"><iframe allowfullscreen="" frameborder="0" src="https://embed.waze.com/iframe?zoom=15&lat=19.331048&lon=-99.565787&ct=livemap" width="100%" height="580"></iframe></div>
+        </section>
+
+    <footer>
+        <div class="container text-center">
+            <p>Copyright ©&nbsp;FRADA Logistic S.A. de C.V. 2020</p>
+            <ul class="list-inline banner-social-buttons">
+                <li class="list-inline-item">&nbsp;<button class="btn btn-primary btn-lg btn-default" type="button"><i class="fa fa-twitter fa-fw"></i><span class="network-name">&nbsp;Twitter</span></button></li>
+                <a href="http://aws.amazon.com/what-is-cloud-computing"><img src="http://awsmedia.s3.amazonaws.com/AWS_logo_poweredby_black_127px.png" alt="Powered by AWS Cloud Computing"></a>
+            </ul>
+        </div>
+    </footer>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
+    <script src="assets/js/grayscale.js"></script>
+</body>
+
+</html>

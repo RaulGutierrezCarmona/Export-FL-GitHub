@@ -1,0 +1,15 @@
+#logo {
+  max-height: 100px;
+  margin-right: -20px;
+  margin-top: -3px;
+  display: inline-block;
+}
+
+ul li{
+  color:rgb(243, 242, 242);
+  font-size:8px;
+}
+ul li span{
+  color:rgb(243, 242, 242);
+  font-size:20px;
+}   
